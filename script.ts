@@ -26,6 +26,22 @@ form.addEventListener('submit', (e: Event) => {
       formStatus.textContent = 'Please fill out all fields.';
       return;
     }
+    else if (nameInput.value.trim() === '' || emailInput.value.trim() === '' || messageInput.value.trim() === '') {
+        formStatus.textContent = 'Please fill out all fields.';
+        return;
+      }
+      
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+if (!emailRegex.test(emailInput.value)) {
+  formStatus.textContent = 'Invalid email format.';
+  return;
+}
+if (messageInput.value.length < 10) {
+    formStatus.textContent = 'Hye! Your Message must be at least 10 characters.';
+    console.error('Message must be at least 10 characters.');
+    return;
+}
+
   
     // Submit form data
     console.log(formData.get('name'));
